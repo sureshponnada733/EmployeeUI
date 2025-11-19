@@ -23,7 +23,7 @@
           </div>
 
           <!-- Add Employee Button -->
-          <button style="min-width: 230px;font-size: 16px;" class="btn btn-primary btn-lg shadow-sm" (click)="addEmployee()">
+          <button style="min-width: 160px;" class="btn btn-primary fs-6 shadow-sm" (click)="addEmployee()">
             <i class="fa fa-plus me-2"></i> Add Employee
           </button>
         </div>
@@ -88,31 +88,31 @@
 
           <div class="mb-3">
             <label class="form-label fw-semibold">Name</label>
-            <input type="text" class="form-control form-control-lg" formControlName="name" />
+            <input type="text" class="form-control form-control-md" formControlName="name" />
           </div>
 
           <div class="mb-3">
             <label class="form-label fw-semibold">Email</label>
-            <input type="email" class="form-control form-control-lg" formControlName="email" />
+            <input type="email" class="form-control form-control-md" formControlName="email" />
           </div>
 
           <div class="mb-3">
             <label class="form-label fw-semibold">Phone</label>
-            <input type="text" class="form-control form-control-lg" formControlName="phone" />
+            <input type="text" class="form-control form-control-md" formControlName="phone" />
           </div>
 
           <div class="mb-3">
             <label class="form-label fw-semibold">Salary</label>
-            <input type="number" class="form-control form-control-lg" formControlName="salary" />
+            <input type="number" class="form-control form-control-md" formControlName="salary" />
           </div>
 
           <!-- Modal Footer -->
           <div class="modal-footer border-0 pt-0">
-            <button type="button" class="btn btn-outline-secondary btn-lg" (click)="closeModal()">Cancel</button>
-            <button *ngIf="!isUpdate" type="submit" class="btn btn-primary btn-lg">
+            <button type="button" class="btn btn-outline-secondary btn-md fs-6" (click)="closeModal()">Cancel</button>
+            <button *ngIf="!isUpdate" type="submit" class="fs-6 btn btn-primary btn-md">
               <i class="fa fa-save me-2"></i> Save
             </button>
-            <button *ngIf="isUpdate" type="button" class="btn btn-success btn-lg" (click)="updateEmployee(currentEmployeeId!, employeeForm.value)">
+            <button *ngIf="isUpdate" type="button" class="fs-6 btn btn-success btn-md" (click)="updateEmployee(currentEmployeeId!, employeeForm.value)">
               <i class="fa fa-edit me-2"></i> Update
             </button>
           </div>
