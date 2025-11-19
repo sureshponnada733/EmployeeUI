@@ -75,10 +75,10 @@ onSearch() {
   }
 
   updateEmployee(id: string, payload: Employeemodal) {
-    const index = this.employeeList.findIndex(x=>x.id == id)
+    const index = this.filterEmployee.findIndex(x=>x.id == id)
       if (index > -1) {
-        this.employeeList[index] = {
-          ...this.employeeList[index],
+        this.filterEmployee[index] = {
+          ...this.filterEmployee[index],
           ...payload,
         };
         this.toastr.success('Employee updated successfully');
@@ -105,26 +105,36 @@ onSearch() {
 
     this._commonService.deleteEmployee(id).subscribe((res)=>{
       console.log(res);
-      this.employeeList = this.employeeList.filter((x)=>x.id != id);
+      this.filterEmployee = this.filterEmployee.filter((x)=>x.id != id);
       this.toastr.success('Employee deleted successfully');
     })
   }
    
  
 
-  onSubmit() {
-    if (this.employeeForm.valid) {
-      const newEmployee: Employeemodal = this.employeeForm.value;
+onSubmit() {
+  if (this.employeeForm.valid) {
+    const newEmployee: Employeemodal = this.employeeForm.value;
 
-     this.filterEmployee.push({ ...newEmployee });
-      this.employeeForm.reset();
-      console.log(this.employeeList);
-      this.closeModal();
-    } else {
-      this.toastr.error('Please fill all the fields');
-      return this.employeeForm.value;
-    }
+    this._commonService.addEmployee(newEmployee).subscribe(
+      (res: Employeemodal) => {
+        // Update local arrays after backend returns success
+        this.filterEmployee.push(res);
+        this.employeeForm.reset();
+        this.closeModal();
+        this.toastr.success('Employee Added successfully');
+      },
+      (err) => {
+        this.toastr.error('Failed to add employee');
+        console.error(err);
+      }
+    );
+  } else {
+    this.toastr.error('Please fill all the fields');
+    return this.employeeForm.value;
   }
+}
+
 
   addEmployee() {
     this.employeeForm.reset();
