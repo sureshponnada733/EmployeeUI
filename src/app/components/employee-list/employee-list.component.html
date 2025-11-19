@@ -5,7 +5,13 @@
         <div class="d-flex justify-content-between mb-3">
             <h3>Employee List</h3>
              <div class="input-group w-25">
-        <input type="text" class="form-control" (input)="onSearch()" [(ngModel)]="searchText" placeholder="Search...">
+   <input
+  type="text"
+  class="form-control"
+  [(ngModel)]="searchText"
+  (ngModelChange)="onSearch()"
+  placeholder="Search..."
+>
         <span class="input-group-text">
             <i class="bi bi-search"></i>
         </span>
@@ -27,10 +33,10 @@
             <tbody>
                @for (item of filterEmployee; track $index) {
                     <tr>
-                    <td>{{item.name}}</td>
-                    <td>{{item.email}}</td>
-                    <td>{{item.phone}}</td>
-                    <td>{{item.salary | currency:'INR':'symbol':'1.2-2':'en-IN'}}</td>
+                    <td>{{item?.name}}</td>
+                    <td>{{item?.email}}</td>
+                    <td>{{item?.phone}}</td>
+                    <td>{{item?.salary | currency:'INR':'symbol':'1.2-2':'en-IN'}}</td>
                     <td class="d-flex gap-3">
                         <button class="btn btn-success btn-sm" (click)="onEdit(item)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                         <button class="btn btn-danger btn-sm"(click)="deleteEmployee(item.id, item.name)" ><i class="fa fa-trash" aria-hidden="true"></i></button>

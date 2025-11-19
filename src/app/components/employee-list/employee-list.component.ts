@@ -51,14 +51,13 @@ export class EmployeeListComponent implements OnInit {
     });
   }
 
-  onSearch(){
-    const text = this.searchText.toLocaleLowerCase();
-    this.filterEmployee = this.employeeList.filter(emp=>
-      emp.name.toLocaleLowerCase().includes(text) ||
-      emp.email.toLocaleLowerCase().includes(text) 
-
-    )
-  }
+onSearch() {
+  const text = this.searchText?.toLowerCase() || '';
+  this.filterEmployee = this.employeeList.filter(emp =>
+    emp.name.toLowerCase().includes(text) ||
+    emp.email.toLowerCase().includes(text)
+  );
+}
 
   onEdit(employee: Employeemodal) {
     // employee is a single object, not an array
