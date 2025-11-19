@@ -20,7 +20,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Phone</th>
-                    <th>Salary</th>
+                    <th>Salary </th>
                     <th width="160">Actions</th>
                 </tr>
             </thead>
@@ -32,8 +32,8 @@
                     <td>{{item.phone}}</td>
                     <td>{{item.salary | currency:'INR':'symbol':'1.2-2':'en-IN'}}</td>
                     <td class="d-flex gap-3">
-                        <button class="btn btn-success btn-sm" (click)="onEdit(item)">Edit</button>
-                        <button class="btn btn-danger btn-sm"(click)="deleteEmployee(item.id, item.name)" >Delete</button>
+                        <button class="btn btn-success btn-sm" (click)="onEdit(item)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                        <button class="btn btn-danger btn-sm"(click)="deleteEmployee(item.id, item.name)" ><i class="fa fa-trash" aria-hidden="true"></i></button>
                     </td>
                 </tr>
                 }
