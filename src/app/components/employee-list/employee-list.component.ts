@@ -119,7 +119,7 @@ onSubmit() {
     this._commonService.addEmployee(newEmployee).subscribe(
       (res: Employeemodal) => {
         // Update local arrays after backend returns success
-        this.filterEmployee.push(res);
+        this.filterEmployee.unshift(res);
         this.employeeForm.reset();
         this.closeModal();
         this.toastr.success('Employee Added successfully');
